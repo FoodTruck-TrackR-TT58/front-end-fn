@@ -41,9 +41,8 @@ const Register = (props) => {
     const postMember = (user) =>{
 
         axios
-        .post("http://localhost:2019/register",user)
+        .post("https://foodtruck-tt58.herokuapp.com/register",user)
         .then((res) => {
-        console.log(res);
          props.history.push("/login");
         })
         .catch((err) => console.log(err.response))

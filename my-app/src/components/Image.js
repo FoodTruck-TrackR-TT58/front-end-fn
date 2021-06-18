@@ -28,9 +28,7 @@ formData.append(
 
 axiosWithAuth().post(`/trucks/menu/${props.menuid}/image/upload`,formData)
 .then(res =>
-    {
-        console.log(res)
-    })
+    {console.log("")})
     .catch(err => {
         console.log(err.response)
     })
