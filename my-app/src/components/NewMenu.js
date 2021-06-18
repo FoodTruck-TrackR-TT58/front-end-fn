@@ -11,7 +11,6 @@ itemprice:"",
 }
 
 const NewMenu = (props) => {
-console.log(props)
 const [menuItem,setMenuItem] = useState(initMenu);
 
 const onChange = (e) => {

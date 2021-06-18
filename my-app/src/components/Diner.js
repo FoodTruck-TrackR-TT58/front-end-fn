@@ -67,7 +67,6 @@ const Diner = (props) => {
     )
 }
 const mapStateToProps = (state) => {
-    console.log(state)
 return {
     trucks: state.trucks,
     isFetching: state.isFetching,

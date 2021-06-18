@@ -13,7 +13,10 @@ const DinerDashboard = (props) => {
 
     const submit = (e) => {
       props.addRating(rate, mytruck.truckid) 
-      props.getAllTrucks();
+      setTimeout(()=>{
+        props.getAllTrucks();
+      },2000)
+     
     }
 
 
