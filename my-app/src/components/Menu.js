@@ -9,7 +9,7 @@ import Image from "./Image";
 const Menu = (props) => {
     const [menuImg,setImg] = useState("");
     const {menu} = props;
-    const [hidden, setHidden] = useState(true);
+    // const [hidden, setHidden] = useState(true);
 
     useEffect(() => {
     axiosWithAuth()
@@ -36,7 +36,7 @@ const Menu = (props) => {
             <p>Price: {menu.itemprice}$</p>
             {menuImg !== ""?(<img  src = {menuImg} alt = "menuImg" width = "200px" className = "rounded-circle"/>):<></> }
            
-            {props.role === "operator" ? <div>{menuImg === "" ? <Image menuid = {menu.menuid} setHidden = {setHidden}/>: <></>} 
+            {props.role === "operator" ? <div>{menuImg === "" ? <Image menuid = {menu.menuid} /*setHidden = {setHidden}*//>: <></>} 
             <br/><br/> 
             <button onClick = {deleteM} className = "btn btn-danger">Delete menu</button></div> : <></>}
         </div>
@@ -44,7 +44,6 @@ const Menu = (props) => {
 }
 
 const mapStatetoProps = (state) => {
-    // console.log(state)
     return {
      role: state.role
     }
