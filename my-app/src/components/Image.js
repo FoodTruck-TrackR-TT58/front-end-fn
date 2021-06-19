@@ -33,7 +33,7 @@ axiosWithAuth().post(`/trucks/menu/${props.menuid}/image/upload`,formData)
         console.log(err.response)
     })
 
-props.setHidden(true);
+// props.setHidden(true);
 
 setTimeout(()=>{
     props.getMyTrucks();
