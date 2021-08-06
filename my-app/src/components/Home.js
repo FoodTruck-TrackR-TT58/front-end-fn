@@ -4,7 +4,7 @@ const Home = (props) => {
 
     return(
         <header>
-            <h1>Welcome to Foodtrucks!</h1>
+            <h1>Welcome to Food Trucks!</h1>
             <div>
         <Link to="/Login"><button className = "btn btn-primary" >Login</button></Link>
 
