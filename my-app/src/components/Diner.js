@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import {getAllTrucks,getCurrentUser,addLocation,getRoleInfo} from "../actions"
+import {getAllTrucks,getCurrentUser,addLocation,getRoleInfo,findTruckByLocation} from "../actions"
 import DinerDashboard from "./DinerDashboard";
 
 const initLocation = {
-    currentlocation: ''
+    // currentlocation: ''
 }
 
 const Diner = (props) => {
     const [hidden,setHidden] = useState(true)
     const [locat,setLocat] = useState(initLocation)
-
+    // const [search,setSearch] = useState("")
+    
     useEffect(() => {
         props.getAllTrucks()
         props.getCurrentUser()
@@ -35,8 +36,15 @@ const Diner = (props) => {
         setHidden(!hidden)
         }
         
+        setLocat("")
     }
-    
+
+    const findByLocation = (e) => {
+    e.preventDefault();
+    props.findTruckByLocation(locat.search)
+    setLocat(initLocation);
+    }
+
     return(
         <div>
     {props.dinlocat !== ""?
@@ -53,7 +61,16 @@ const Diner = (props) => {
                 <button onClick = {submitLocat} className = "btn btn-success"> Add your location</button><br/><br/>
 
             </>)}
-            
+           
+            <div>
+            <br/>
+            <h6>Find truck by location: </h6>
+            <form>
+            <input  type = "text" name = "search" value = {locat.search} onChange = {change} placeholder = "Enter desired location"/>
+            <input type = "submit" value = "Search" onClick = {findByLocation} style = {{background:"#5bc0de", color:"white"}}/>
+            </form>
+            </div>
+            <br/>
             <h3>Trucks Available</h3>
 
             {props.isFetching ? <h3>Data is loading... Please wait</h3> :
@@ -74,4 +91,4 @@ return {
     dinlocat: state.currentuser.currentlocation
 }
 }
-export default connect(mapStateToProps,{getAllTrucks,getCurrentUser,addLocation,getRoleInfo})( Diner);
+export default connect(mapStateToProps,{getAllTrucks,getCurrentUser,addLocation,getRoleInfo,findTruckByLocation})( Diner);

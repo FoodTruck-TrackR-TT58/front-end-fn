@@ -88,7 +88,7 @@ export const getAllTrucks = () => dispatch => {
         dispatch({type:GET_ALL_TRUCKS,payload:res.data})
     })
     .catch(err => {
-        dispatch({type: API_START,payload:err.response})
+        dispatch({type: API_FAIL,payload:err.response})
     })
 }
 
@@ -195,6 +195,20 @@ export const logout = () => dispatch => {
     .then(res => {
         // dispatch({type: API_SUCCESS ="API_SUCCESS" }); 
         dispatch({type:LOGOUT})
+    })
+    .catch(err => {
+        
+        dispatch({type: API_FAIL,payload:err.response})
+    })
+}
+
+export const findTruckByLocation = (inputVal) => dispatch => {
+    axiosWithAuth()
+    .get("/trucks/trucks")
+    .then(res => { 
+        dispatch({type:GET_ALL_TRUCKS,payload:res.data.filter(tr => {
+            return tr.location == inputVal
+        })})
     })
     .catch(err => {
         
